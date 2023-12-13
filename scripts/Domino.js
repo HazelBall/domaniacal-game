@@ -3,11 +3,13 @@
  */
 
 class Domino {
-    constructor(sideOne, sideTwo) {
-        this.sideOne = sideOne;
-        this.sideTwo = sideTwo;
-        this.next = null;
-        this.prev = null;
+    constructor(side1, side2) {
+        this.side1 = side1;
+        this.side2 = side2;
+    }
+
+    static createDeck = (minPips, maxPips) => {
+        
     }
 
     /**
@@ -19,10 +21,10 @@ class Domino {
     matches = (domino) => {
         if(
             domino instanceof Domino
-            && (this.sideOne === domino.sideOne
-            || this.sideOne === domino.sideTwo
-            || this.sideTwo === domino.sideOne
-            || this.sideTwo === domino.sideTwo)
+            && (this.side1 === domino.side1
+            || this.side1 === domino.side2
+            || this.side2 === domino.side1
+            || this.side2 === domino.side2)
         ) return true;
         return false;
     }
@@ -46,7 +48,7 @@ class Domino {
      * @returns string containing the two sides of the domino, split by a hyphen
      */
     toString = () => {
-        return this.sideOne + "-" + this.sideTwo;
+        return this.side1 + "-" + this.side2;
     }
 }
 

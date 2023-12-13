@@ -1,42 +1,50 @@
 import Domino from "./Domino.js";
 
+class Node {
+    constructor(card) {
+        this.card = card;
+        this.next = null;
+    }
+}
+
 class Stack {
     constructor() {
-        this.last = null;
+        this.topCard = null;
     }
 
     /**
-     * Adds a new domino to the top of the stack
-     * @param {*} domino Domino object
-     * @returns 0 if domino is added successfully, or -1 if there was an error.
+     * 
+     * @param {*} newCard 
      */
-    addDomino = (domino) => {
-        if(!(domino instanceof Domino)) throw "Stack Input is not of Domino Class!";
-
-        if(this.last === null) {
-            this.last = domino;
-        } else {
-            this.last.next = domino;
-            domino.prev = this.last;
-            this.last = domino;
+    push = (newCard) => {
+        if(this.topCard = null) this.top = new Node(newCard);
+        else {
+            let newNode = new Node(newCard)
+            newNode.next = this.topCard;
+            this.topCard = newNode;
         }
     }
 
     /**
-     * Removes the top domino in the stack, returning it for use in someone else's stack;
-     * @returns the last domino in the stack;
-     * @throws error if 
+     * 
+     * @returns 
      */
-    removeDomino = () => {
-        if(this.last === null) throw "Stack is Empty!";
+    pop = () => {
+        if(this.topCard === null) throw "Stack is Empty!";
 
+        const poppedCard = this.top.card;
+        this.top = this.top.next;
+        return poppedCard;
+    }
 
-        let prev = this.last.prev;
-        if(prev !== null) this.last.prev.next = null;
-
-        let removed = this.last;
-        this.last = this.last.prev;
-        return removed;
+    /**
+     * 
+     * @returns 
+     */
+    peek = () => {
+        if(this.topCard != null)
+            return this.topCard.card;
+        else return null;
     }
 }
 

@@ -3,14 +3,14 @@ import Domino from "./Domino.js";
 const PIPS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 class Deck {
-    constructor(maxPips) {
+    constructor(minPips, maxPips) {
         /*this.cards = PIPS.flatMap((sideOne) => {
             return PIPS.map((sideTwo) => {
                 return new Domino(sideOne, sideTwo);
             })
         })*/
         var cards = []
-        for(let i = 0; i <= maxPips; i++) {
+        for(let i = minPips; i <= maxPips; i++) {
             for(let j = i; j <= maxPips; j++) {
                 cards.push(new Domino(i, j))
             }
@@ -29,7 +29,7 @@ class Deck {
         }
     }
 
-    removeTopCard = () => {
+    draw = () => {
         return this.cards.pop();
     }
 }
